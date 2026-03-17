@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic Input Form</title>
+</head>
+
+<style>
+
+    body {
+        font-family: sans-serif;
+        margin: 20px;
+        background-color: rgb(178, 178, 178);
+    }
+
+    .form input {
+    background-color: #9fc7d4;
+    }
+
+    .form input::placeholder {
+    color: rgb(0, 0, 0);
+    }
+
+.form input[type="submit"] {
+    width: 150px;
+    transition: width 3s ease;
+}
+
+.form input[type="submit"]:hover {
+
+}
+
+
+</style>
+
+
+<body>
+
+    <h2> Basic Input Form</h2>
+
+
+    <form action="/action_page.php" class="form">
+    <fieldset>
+    <legend>Enter Your Name:</legend>
+    <label for="fname">First name:</label><br>
+    <input type="text" id="fname" name="fname" placeholder="James"><br>
+    <label for="lname">Last name:</label><br>
+    <input type="text" id="lname" name="lname" placeholder="Doakes"><br></br>
+    <label for="email">Email Address:</label><br>
+    <input type="email" id="email" name="email" placeholder="djames@dexter.com"><br></br>
+    <input type="submit" value="Submit" class= Submit>
+    </fieldset>
+</form>
+</body>
+</html>

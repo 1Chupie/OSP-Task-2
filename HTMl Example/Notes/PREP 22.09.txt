@@ -1,0 +1,10 @@
+For my Fake Wikipedia Page project, I designed the layout to closely resemble a real Wikipedia article. I chose a clean white background and a clear header containing the Wikipedia logo and search bar, as this reflects the minimalistic and accessible style used on authentic pages. The main content body was structured with headings, subheadings, and an infobox. The infobox was floated to the right with a light grey background to mirror how Wikipedia displays quick facts and images. This choice improved readability and provided users with at-a-glance information. I also underlined headings to reflect Wikipedia’s conventions and to guide readers smoothly through the content. These stylistic choices supported both authenticity and usability.
+
+In terms of coding, I used core HTML elements such as <h1>, <h2>, <p>, and <ul> to structure the text clearly. The <a> tag was used to link keywords to related Wikipedia pages, which enhanced navigation and user experience. CSS classes and IDs were implemented to control the layout, including the biography infobox and content body, which kept the structure consistent and visually centred. I also adjusted margins, borders, and padding to ensure the layout was neat and easy to follow.
+
+A key challenge I faced was aligning the search box with the Wikipedia logo. I resolved this by adjusting CSS margins until it matched the rest of the content. This demonstrated problem-solving and reinforced my understanding of layout styling.
+
+According to Wikipedia’s own design principles, pages are structured for simplicity, accessibility, and readability (Wikipedia, 2025), which directly influenced my decisions.
+
+Reference
+Wikipedia (2025) Manual of Style. Available at: https://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style
