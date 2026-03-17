@@ -7,6 +7,30 @@
 ![SQLite](https://img.shields.io/badge/Database-SQLite-lightblue?logo=sqlite)
 ![Status](https://img.shields.io/badge/Status-Active-brightgreen)
 
+## 📋 Table of Contents
+
+- [Project Structure](#-project-structure)
+- [Getting Started](#-getting-started)
+- [Configuration](#️-configpy)
+- [App Factory](#️-__init__py)
+- [Database Init](#️-_init_dbpy)
+- [Models](#️-modelspy)
+  - [User System](#-user-system)
+  - [Item System](#️-item-system)
+  - [Booking System](#-booking-system)
+  - [Contact System](#-contact-system)
+- [Routes](#-routespy)
+  - [Page Routes](#-page-routes)
+  - [Authentication Routes](#-authentication-routes)
+  - [Booking Routes](#-booking-routes)
+  - [Payment Routes](#-payment-routes)
+  - [Contact Route](#-contact-route)
+- [Database Schema](#️-database-schema)
+- [Security Notes](#️-security-notes)
+- [Tech Stack](#-tech-stack)
+- [run.py](#-runpy)
+
+
 ---
 
 ## 📁 Project Structure
