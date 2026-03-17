@@ -1,0 +1,110 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding-top: 30px;
+
+
+}
+
+h1, h2, h3, h4 {
+    color: #ffffff;
+    text-shadow: 1px 1px 2px gray;
+}
+
+
+
+ul.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #333333;
+    position: fixed;
+    overflow: hidden;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: center;     
+    align-items: center; 
+
+
+}
+
+ul.navbar li {
+  float: none;
+}
+
+li a {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+}
+
+li a:hover {
+    background-color: #111111;
+}
+
+.active {
+  background-color: #555555;
+  color: white;
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    color: #222;
+}
+
+
+.div2 {
+    width: 100%;
+    height: 100px;
+    background: #313131;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: left;
+}
+
+.div2 h2 {
+    color: #ffffff;
+    margin-left: 20px;
+}
+
+.div3 {
+    grid-column: span 2 / span 2;
+    grid-row: span 5 / span 5;
+    grid-column-start: 4;
+    background: #fffaf5;
+}
+
+h1 {
+    
+    font-size: 36px;
+    margin-bottom: 16px;
+    text-align: center;
+
+
+}
+
+
+
+h1, h2, h3, h4, p {
+    margin: 0;
+}
+
+
+
+.parent1 {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 8px;
+}
+    
