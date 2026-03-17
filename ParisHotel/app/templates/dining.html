@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dining - Hôtel Étoile Lumière</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{url_for('main.index')}}">Home</a></li>
+                <li><a href="{{url_for('main.rooms')}}">Rooms</a></li>
+                <li><a href="{{url_for('main.booking')}}">Book Now</a></li>
+                <li><a href="{{url_for('main.dining')}}">Dining</a></li>
+                <li><a href="{{url_for('main.location')}}">Location</a></li>
+                <li><a href="{{url_for('main.contacts')}}">Contact</a></li>
+                <li><a href="{{ url_for('main.gallery') }}">Gallery</a></li>
+                <li><a href="{{ url_for('main.logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <img src="{{ url_for('static', filename='images/Stock19.jpg') }}" alt="Luxury Dining">
+        <div class="hero-text-light">
+            <h1>Fine Dining Experience</h1>
+            <p>Elegant cuisine inspired by Parisian flavours</p>
+            <div style="margin-top: 20px;">
+                <a href="{{url_for('main.booking')}}" class="cta-btn">Reserve Now</a>
+
+                <a href="#menu" class="cta-btn" style="margin-left: 15px; background-color: #333;">
+                    Check Menu
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dining Options -->
+    <section id="rooms">
+        <h2>Our Dining Options</h2>
+
+        <div class="room-card">
+            <img src="{{ url_for('static', filename='images/Stock6.jpg') }}" alt="Breakfast">
+            <h3>Breakfast Lounge</h3>
+            <p>Enjoy freshly baked pastries, seasonal fruits, and artisan coffee served daily from 7am–11am.</p>
+        </div>
+
+        <div class="room-card">
+            <img src="{{ url_for('static', filename='images/Stock20.jpg') }}" alt="Dinner">
+            <h3>Evening Restaurant</h3>
+            <p>A refined dining atmosphere offering gourmet dishes crafted by our executive chef.</p>
+        </div>
+    </section>
+
+    <!-- Signature Features -->
+    <section id="rooms">
+        <h2>Signature Experiences</h2>
+
+        <div class="room-card">
+            <img src="{{ url_for('static', filename='images/Stock21.jpg') }}" alt="Rooftop Dining">
+            <h3>Rooftop Dining</h3>
+            <p>Dine under the stars with panoramic views and a curated seasonal tasting menu.</p>
+        </div>
+
+        <div class="room-card">
+            <img src="{{ url_for('static', filename='images/Stock22.jpg') }}" alt="Private Dining">
+            <h3>Private Dining</h3>
+            <p>Celebrate special occasions in our exclusive private dining suite with personalised service.</p>
+        </div>
+    </section>
+
+
+<section id="menu">
+    <h2>Our Menu</h2>
+
+    <div class="menu-container">
+
+        <!-- Café -->
+        <div class="menu-card">
+            <h3>🥐 Café Selection</h3>
+
+            <p><strong>Croissant</strong><span class="price">£4.50</span></p>
+            <p class="description">Freshly baked buttery pastry.</p>
+
+            <p><strong>Pain au Chocolat</strong><span class="price">£4.80</span></p>
+            <p class="description">Flaky pastry filled with rich chocolate.</p>
+
+            <p><strong>Espresso</strong><span class="price">£3.00</span></p>
+            <p class="description">Rich traditional coffee.</p>
+        </div>
+
+        <!-- Wine Bar -->
+        <div class="menu-card">
+            <h3>🍷 Wine Bar</h3>
+
+            <p><strong>Sauvignon Blanc</strong><span class="price">£8</span></p>
+            <p class="description">Crisp white wine.</p>
+
+            <p><strong>Merlot</strong><span class="price">£9</span></p>
+            <p class="description">Soft and fruity red wine.</p>
+
+            <p><strong>Cheese Board</strong><span class="price">£14</span></p>
+            <p class="description">Selection of fine French cheeses.</p>
+        </div>
+
+        <!-- Evening Restaurant -->
+        <div class="menu-card">
+            <h3>🌙 Evening Restaurant</h3>
+
+            <p><strong>Grilled Salmon</strong><span class="price">£18</span></p>
+            <p class="description">Served with seasonal vegetables.</p>
+
+            <p><strong>Beef Bourguignon</strong><span class="price">£22</span></p>
+            <p class="description">Classic French slow-cooked beef.</p>
+
+            <p><strong>Truffle Pasta</strong><span class="price">£19</span></p>
+            <p class="description">Creamy pasta with black truffle.</p>
+        </div>
+
+        <!-- All Day Menu -->
+        <div class="menu-card">
+            <h3>🍽 All-Day Menu</h3>
+
+            <p><strong>Club Sandwich</strong><span class="price">£12</span></p>
+            <p class="description">Chicken, bacon, lettuce & tomato.</p>
+
+            <p><strong>Caesar Salad</strong><span class="price">£11</span></p>
+            <p class="description">Crisp romaine with parmesan.</p>
+
+            <p><strong>Margherita Pizza</strong><span class="price">£13</span></p>
+            <p class="description">Classic tomato, mozzarella & basil.</p>
+        </div>
+
+    </div>
+</section>
+
+
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Hôtel Étoile Lumière. All rights reserved.</p>
+        <p>Follow us on social media: [Facebook] [Instagram]</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Stay - Hôtel Étoile Lumière</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{url_for('main.index')}}">Home</a></li>
+                <li><a href="{{url_for('main.rooms')}}">Rooms</a></li>
+                <li><a href="{{url_for('main.booking')}}">Book Now</a></li>
+                <li><a href="{{url_for('main.dining')}}">Dining</a></li>
+                <li><a href="{{url_for('main.location')}}">Location</a></li>
+                <li><a href="{{url_for('main.contacts')}}">Contact</a></li>
+                <li><a href="{{ url_for('main.gallery') }}">Gallery</a></li>
+                <li><a href="{{ url_for('main.logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="form">
+        <h2>Book Your Stay</h2>
+        <div class="form-container">
+            <form action="{{ url_for('main.submit_booking') }}" method="POST">
+                
+                <div class="form-group">
+                    <label for="checkin-date" class="form-label required">Check-in Date</label>
+                    <input type="date" id="checkin-date" name="checkin_date" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="checkout-date" class="form-label required">Check-out Date</label>
+                    <input type="date" id="checkout-date" name="checkout_date" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="room-type" class="form-label required">Room Type</label>
+                    <select id="room-type" name="room_type" class="form-select" required>
+                        <option value="">Select a room type</option>
+                        <option value="deluxe">Deluxe Suite</option>
+                        <option value="superior">Superior Room</option>
+                    </select>
+                </div>
+
+                <div class="form-buttons">
+                    <button type="submit" class="form-button form-button-primary">Book Now</button>
+                </div>
+                
+            </form>
+        </div>
+
+        {% if user and user.bookings %}
+    <div style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #ddd;">
+        <h3 style="text-align: center; margin-bottom: 1.5rem;">Your Bookings</h3>
+        <div class="bookings-grid">
+            {% for booking in user.bookings %}
+        <div class="form-container" style="background-color: #fff; border: 2px solid #f4a261;">
+            <div style="margin-bottom: 1rem;">
+                <p><strong>Room Type:</strong> {{ booking.room.room_type }}</p>
+                <p><strong>Check-in:</strong> {{ booking.check_in_date }}</p>
+                <p><strong>Check-out:</strong> {{ booking.check_out_date }}</p>
+                <p><strong>Total Price:</strong> ${{ "%.2f"|format(booking.total_price) }}</p>
+                <p>
+                    <strong>Payment Status:</strong> 
+                    {% if booking.payment_status == 'pending' %}
+                        <span style="color: #fd7e14; font-weight: bold;">● Pending</span>
+                    {% elif booking.payment_status == 'paid' %}
+                        <span style="color: #28a745; font-weight: bold;">✓ Paid</span>
+                    {% elif booking.payment_status == 'cancelled' %}
+                        <span style="color: #dc3545; font-weight: bold;">✗ Cancelled</span>
+                    {% endif %}
+                </p>
+            </div>
+
+            {% if booking.payment_status == 'pending' %}
+            <button type="button" class="form-button form-button-primary" onclick="openPaymentModal('{{ booking.id }}')">
+                Pay Now - ${{ "%.2f"|format(booking.total_price) }}
+            </button>
+            {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    </section>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Payment Details</h3>
+                <span class="close" onclick="closePaymentModal()">&times;</span>
+            </div>
+
+            <form id="paymentForm" action="{{url_for('main.process_pending_payment')}}" method="POST">
+                <input type="hidden" id="bookingId" name="booking_id">
+
+                <div class="form-group">
+                    <label for="cardholder" class="form-label required">Cardholder Name</label>
+                    <input type="text" id="cardholder" name="cardholder" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cardnumber" class="form-label required">Card Number</label>
+                    <input type="text" id="cardnumber" name="cardnumber" class="form-input" placeholder="1234567890123456" maxlength="16" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="expiry" class="form-label required">Expiry Date (MM/YY)</label>
+                    <input type="text" id="expiry" name="expiry" class="form-input" placeholder="MM/YY" maxlength="5" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cvv" class="form-label required">CVV</label>
+                    <input type="text" id="cvv" name="cvv" class="form-input" placeholder="123" maxlength="4" required>
+                </div>
+
+                <div class="form-buttons">
+                    <button type="submit" class="form-button form-button-primary" style="width: 100%;">Complete Payment</button>
+                    <button type="button" class="form-button" style="width: 100%; background-color: #999; margin-top: 0.5rem;" onclick="closePaymentModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Hôtel Étoile Lumière. All rights reserved.</p>
+        <p>Follow us on social media: [Facebook] [Instagram]</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/Script.js') }}"></script>
+</body>
+</html>

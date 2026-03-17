@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooms - Hôtel Étoile Lumière</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{url_for('main.index')}}">Home</a></li>
+                <li><a href="{{url_for('main.rooms')}}">Rooms</a></li>
+                <li><a href="{{url_for('main.booking')}}">Book Now</a></li>
+                <li><a href="{{url_for('main.dining')}}">Dining</a></li>
+                <li><a href="{{url_for('main.location')}}">Location</a></li>
+                <li><a href="{{url_for('main.contacts')}}">Contact</a></li>
+                <li><a href="{{ url_for('main.gallery') }}">Gallery</a></li>
+                <li><a href="{{ url_for('main.logout') }}">Logout</a></li>
+
+
+            </ul>
+        </nav>
+    </header>
+
+
+<section id="room-calendar">
+
+    <h2>{{ calendar.month_name[month] }} {{ year }}</h2>
+
+    <!-- Navigation Buttons -->
+    <div class="calendar-nav">
+        <a class="nav-btn"
+           href="{{ url_for('main.rooms',
+                month=month-1 if month > 1 else 12,
+                year=year-1 if month == 1 else year) }}">
+            ← Previous
+        </a>
+
+        <a href="{{url_for('main.booking')}}" class="calender-cta-btn">Book Now</a>
+
+
+        <a class="nav-btn"
+           href="{{ url_for('main.rooms',
+                month=month+1 if month < 12 else 1,
+                year=year+1 if month == 12 else year) }}">
+            Next →
+        </a>
+    </div>
+
+    
+    <div class="calendar">
+
+        <!-- Day Headers -->
+        {% for day in ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"] %}
+            <div class="day-header">{{ day }}</div>
+        {% endfor %}
+
+        <!-- Calendar Days -->
+        {% for week in month_days %}
+            {% for day in week %}
+                <div class="day">
+
+                    {% if day.month == month %}
+                        {% set data = availability.get(day) %}
+
+                        {% if data %}
+                            <div class="day-content">
+
+                                <div class="date-number">
+                                    {{ day.day }}
+                                </div>
+
+                                <div class="room-info">
+                                    <strong>Deluxe:</strong>
+                                    {{ data.deluxe_available }}<br>
+
+                                    <strong>Superior:</strong>
+                                    {{ data.superior_available }}
+                                </div>
+
+                            </div>
+                        {% endif %}
+                    {% endif %}
+
+                </div>
+            {% endfor %}
+        {% endfor %}
+            
+    </div>
+
+</section>
+
+
+    <section id="features-of-sacre">
+        <h2>Features of Sacré-Cœur</h2>
+        <div class="features-detail">
+            <img src="{{ url_for('static', filename='images/Stock4.jpg') }}" alt="View of Sacré-Cœur">
+            <h3>View of Sacré-Cœur</h3>
+            <p>Enjoy breathtaking views of the iconic Sacré-Cœur Basilica from our rooms, a perfect backdrop for your Parisian stay.</p>
+        </div>
+        <div class="features-detail">
+            <img src="{{ url_for('static', filename='images/Stock6.jpg') }}" alt="Amenity of Sacré-Cœur">
+            <h3>Amenity of Sacré-Cœur</h3>
+            <p>Indulge in our exclusive amenities, including a rooftop terrace with panoramic views, a wellness center, and personalized concierge services to enhance your stay.</p>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Hôtel Étoile Lumière. All rights reserved.</p>
+        <p>Follow us on social media: [Facebook] [Instagram]</p>
+    </footer>
+</body>
+</html>

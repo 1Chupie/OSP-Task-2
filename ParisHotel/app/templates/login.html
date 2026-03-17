@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in - Hôtel Étoile Lumière</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{url_for('main.index')}}">Home</a></li>
+                <li><a href="{{url_for('main.rooms')}}">Rooms</a></li>
+                <li><a href="{{url_for('main.booking')}}">Book Now</a></li>
+                <li><a href="{{url_for('main.dining')}}">Dining</a></li>
+                <li><a href="{{url_for('main.location')}}">Location</a></li>
+                <li><a href="{{url_for('main.contacts')}}">Contact</a></li>
+                <li><a href="{{ url_for('main.gallery') }}">Gallery</a></li>
+                <li><a href="{{ url_for('main.logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="form">
+        <h2>Login</h2>
+        <div class="form-container">
+            <form action="{{url_for('main.submit_login')}}" method="POST">
+
+                <div class="form-group">
+                    <label for="email" class="form-label required">Email Address</label>
+                    <input type="email" id="email" name="email" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="form-label required">Password</label>
+                    <input type="password" id="password" name="password" class="form-input" required>
+                </div>
+
+                <div class="form-buttons">
+                    <button type="submit" class="form-button form-button-primary">Submit</button>
+                </div>
+
+            </form>
+            <p style="text-align: center; margin-top: 1.5rem;">
+                Don't have an account?
+                <a href="{{ url_for('main.register') }}" style="color: #f4a261; font-weight: bold;">Create one here</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Hôtel Étoile Lumière. All rights reserved.</p>
+        <p>Follow us on social media: [Facebook] [Instagram]</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hôtel Étoile Lumière</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{url_for('main.index')}}">Home</a></li>
+                <li><a href="{{url_for('main.rooms')}}">Rooms</a></li>
+                <li><a href="{{url_for('main.booking')}}">Book Now</a></li>
+                <li><a href="{{url_for('main.dining')}}">Dining</a></li>
+                <li><a href="{{url_for('main.location')}}">Location</a></li>
+                <li><a href="{{url_for('main.contacts')}}">Contact</a></li>
+                <li><a href="{{ url_for('main.gallery') }}">Gallery</a></li>
+                <li><a href="{{ url_for('main.logout') }}">Logout</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <img src="{{ url_for('static', filename='images/Stock15.jpg') }}"  alt="Hotel Exterior">
+        <div class="hero-text">
+            <h1>Timeless Parisian Elegance in the Heart of Montmartre</h1>
+            <a href="{{url_for('main.booking')}}" class="cta-btn">Book Your Stay</a>
+        </div>
+    </section>
+
+    <!-- Featured Rooms -->
+    <section id="rooms">
+        <h2>Featured Rooms</h2>
+        <div class="room-card">
+            <img src="{{ url_for('static', filename='images/Stock16.jpg') }}" alt="Luxury Room">
+            <h3>Deluxe Suite</h3>
+            <p>Beautiful view of Sacré-Cœur. Elegant furnishings for ultimate comfort.</p>
+            <a href="{{url_for('main.rooms')}}" class="cta-btn">Explore Rooms</a>
+        </div>
+        <div class="room-card">
+            <img src="{{ url_for('static', filename='images/Stock17.jpg') }}" alt="Cozy Room">
+            <h3>Superior Room</h3>
+            <p>Cozy and intimate, perfect for couples looking for a romantic getaway.</p>
+            <a href="{{url_for('main.rooms')}}" class="cta-btn">Explore Rooms</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Hôtel Étoile Lumière. All rights reserved.</p>
+        <p>Follow us on social media: [Facebook] [Instagram]</p>
+    </footer>
+</body>
+</html>

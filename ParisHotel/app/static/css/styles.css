@@ -1,0 +1,372 @@
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #f8f9fa;
+    margin: 5% auto;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f4a261;
+}
+
+.close {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #f4a261;
+}
+
+.bookings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .bookings-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.map-frame {
+    width: 80%;
+    height: 450px;
+    border: 1px solid black;
+    display: block;
+    margin: 0 auto;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333333;
+}
+
+header {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+#hero {
+    position: relative;
+    text-align: center;
+}
+
+#hero img {
+    width: 100%;
+    height: 800px;
+}
+
+.hero-text,
+.hero-text-light {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.hero-text {
+    color: #3d3d3d;
+}
+
+.hero-text-light {
+    color: #fff;
+}
+
+.cta-btn,
+.calender-cta-btn {
+    background-color: #f4a261;
+    color: #fff;
+    padding: 15px 25px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#rooms,
+#room-details,
+#form,
+#features-of-sacre {
+    padding: 0px;
+    text-align: center;
+}
+
+.room-card,
+.room-detail,
+.features-detail {
+    display: inline-block;
+    margin: 20px;
+    width: 45%;
+}
+
+.room-card img,
+.room-detail img,
+.features-detail img {
+    width: 100%;
+    height: 300px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    margin-top: 20px;
+}
+
+.day-header {
+    background-color: #222;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.day {
+    aspect-ratio: 1 / 1;
+    border: 1px solid #e0e0e0;
+    position: relative;
+    overflow: hidden;
+}
+
+.green-box,
+.orange-box,
+.red-box {
+    height: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    color: white;
+    text-align: center;
+}
+
+.green-box { background-color: #28a745; }
+.orange-box { background-color: #fd7e14; }
+.red-box { background-color: #dc3545; }
+
+.calendar-nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.nav-btn {
+    padding: 8px 14px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.nav-btn:hover {
+    background-color: #555;
+}
+
+.date-number {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#room-calendar {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+#room-calendar h2 {
+    margin-bottom: 20px;
+}
+
+.form-container {
+    background-color: #f8f9fa;
+    color: #333333;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 50px auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: bold;
+    margin: 0 0 0.5rem 0;
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+    width: 100%;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+    border-color: #f4a261;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(244, 162, 97, 0.15);
+}
+
+.form-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-button {
+    background-color: #f4a261;
+    color: #fff;
+    border-radius: 5px;
+    padding: 0.75rem 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-button:hover {
+    background-color: #e89450;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        padding: 1.5rem;
+        margin: 30px auto;
+    }
+
+    .form-buttons {
+        flex-direction: column;
+    }
+
+    .form-button {
+        width: 100%;
+    }
+}
+
+
+
+#menu {
+    padding: 60px 20px;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.menu-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.menu-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.menu-card h3 {
+    color: #f4a261;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.menu-card p {
+    margin: 8px 0;
+}
+
+.price {
+    float: right;
+    font-weight: bold;
+    color: #333;
+}
+
+.description {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 12px;
+}
+
+.menu-card hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 10px 0;
+}

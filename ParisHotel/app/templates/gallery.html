@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gallery - Hôtel Étoile Lumière</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+<header>
+    <nav>
+        <ul>
+                <li><a href="{{url_for('main.index')}}">Home</a></li>
+                <li><a href="{{url_for('main.rooms')}}">Rooms</a></li>
+                <li><a href="{{url_for('main.booking')}}">Book Now</a></li>
+                <li><a href="{{url_for('main.dining')}}">Dining</a></li>
+                <li><a href="{{url_for('main.location')}}">Location</a></li>
+                <li><a href="{{url_for('main.contacts')}}">Contact</a></li>
+                <li><a href="{{ url_for('main.gallery') }}">Gallery</a></li>
+                <li><a href="{{ url_for('main.logout') }}">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section id="rooms">
+    <h2>Our Gallery</h2>
+
+    <!-- Hotel Interior -->
+    <h3>Hotel Interior</h3>
+    <p>Elegant Parisian-inspired interiors featuring marble floors, crystal lighting, and refined décor designed for comfort and sophistication.</p>
+
+    <div class="room-card">
+        <img src="{{ url_for('static', filename='images/Stock19.jpg') }}" alt="Hotel Lobby">
+    </div>
+    <div class="room-card">
+        <img src="{{ url_for('static', filename='images/Stock21.jpg') }}" alt="Hotel Interior Seating">
+    </div>
+
+
+    <!-- Deluxe Rooms -->
+    <h3>Deluxe Rooms</h3>
+    <p>Spacious and beautifully designed, our Deluxe Rooms offer premium bedding, elegant furnishings, and stunning city views for a luxurious stay.</p>
+
+    <div class="room-card">
+        <img src="{{ url_for('static', filename='images/Stock16.jpg') }}" alt="Deluxe Room 1">
+    </div>
+    <div class="room-card">
+        <img src="{{ url_for('static', filename='images/Stock23.jpg') }}" alt="Deluxe Room 2">
+    </div>
+
+
+    <!-- Superior Rooms -->
+    <h3>Superior Rooms</h3>
+    <p>Comfort meets style in our Superior Rooms, featuring modern amenities, soft lighting, and a warm atmosphere ideal for relaxing after exploring Paris.</p>
+
+    <div class="room-card">
+        <img src="{{ url_for('static', filename='images/Stock17.jpg') }}" alt="Superior Room 1">
+    </div>
+    <div class="room-card">
+        <img src="{{ url_for('static', filename='images/Stock24.jpg') }}" alt="Superior Room 2">
+    </div>
+
+
+    <!-- Rooftop Terrace -->
+    <h3>Rooftop Terrace</h3>
+    <p>Enjoy breathtaking panoramic views of Montmartre from our exclusive rooftop terrace — perfect for sunset drinks or peaceful mornings.</p>
+
+    <div class="room-card">
+        <img src="{{ url_for('static', filename='images/Stock21.jpg') }}" alt="Rooftop Terrace 1">
+    </div>
+    <div class="room-card">
+        <img src="{{ url_for('static', filename='images/Stock25.jpg') }}" alt="Rooftop Terrace 2">
+    </div>
+
+
+    <!-- Café -->
+    <h3>Café</h3>
+    <p>Our charming café serves freshly brewed coffee, artisan pastries, and light bites in a relaxed and inviting atmosphere.</p>
+
+    <div class="room-card">
+        <img src="{{ url_for('static', filename='images/Stock9.jpg') }}" alt="Cafe Interior">
+    </div>
+    <div class="room-card">
+        <img src="{{ url_for('static', filename='images/Stock6.jpg') }}" alt="Cafe Seating">
+    </div>
+
+
+    <!-- Wine Bar -->
+    <h3>Wine Bar</h3>
+    <p>Discover an exclusive selection of fine French wines paired with gourmet small plates in our intimate wine bar setting.</p>
+
+    <div class="room-card">
+        <img src="{{ url_for('static', filename='images/Stock26.jpg') }}" alt="Wine Bar 1">
+    </div>
+    <div class="room-card">
+        <img src="{{ url_for('static', filename='images/Stock12.jpg') }}" alt="Wine Bar 2">
+    </div>
+
+
+    <!-- Views of Montmartre -->
+    <h3>Views of Montmartre</h3>
+    <p>Wake up to iconic views of Montmartre’s historic streets and skyline, offering an authentic Parisian experience.</p>
+
+    <div class="room-card">
+        <img src="{{ url_for('static', filename='images/Stock13.jpg') }}" alt="Montmartre View 1">
+    </div>
+    <div class="room-card">
+        <img src="{{ url_for('static', filename='images/Stock27.jpg') }}" alt="Montmartre View 2">
+    </div>
+
+</section>
+
+<footer>
+    <p>&copy; 2025 Hôtel Étoile Lumière. All rights reserved.</p>
+    <p>Follow us on social media: [Facebook] [Instagram]</p>
+</footer>
+
+</body>
+</html>
