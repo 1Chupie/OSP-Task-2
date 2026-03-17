@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Registration - New City University</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            min-height: 100vh;
+        }
+
+        .page-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .register-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .register-container h2 {
+            margin-bottom: 10px;
+            color: #2c7be5;
+        }
+
+        .register-container .subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .register-container input[type="text"],
+        .register-container input[type="email"],
+        .register-container input[type="password"] {
+            width: 100%;
+            padding: 10px 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .register-container input[type="text"]:focus,
+        .register-container input[type="email"]:focus,
+        .register-container input[type="password"]:focus {
+            outline: none;
+            border-color: #2c7be5;
+            box-shadow: 0 0 5px rgba(44, 123, 229, 0.3);
+        }
+
+        .register-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #2c7be5;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+
+        .register-container button:hover {
+            background-color: #1a5fd1;
+        }
+
+        .register-container a {
+            color: #2c7be5;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+        }
+
+        .register-container a:hover {
+            text-decoration: underline;
+        }
+
+        .divider {
+            margin: 20px 0;
+            border-top: 1px solid #ddd;
+            position: relative;
+        }
+
+        .divider span {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: white;
+            padding: 0 10px;
+            color: #999;
+            font-size: 12px;
+        }
+
+        .alert {
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .info-box {
+            background-color: #e7f3ff;
+            border-left: 4px solid #2c7be5;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: left;
+            font-size: 13px;
+            color: #004085;
+        }
+
+        .info-box strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .navbar-top {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #2c7be5;
+            padding: 15px 40px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .navbar-top a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: 0.2s;
+        }
+
+        .navbar-top a:hover {
+            color: #d1e4ff;
+        }
+
+        .page-wrapper {
+            padding-top: 80px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar-top">
+        <div style="font-weight: bold; font-size: 18px;">New City University</div>
+        <div>
+            <a href="{{ url_for('main.index') }}">Home</a>
+            <a href="{{ url_for('main.student_login') }}">Student Login</a>
+            <a href="{{ url_for('main.register') }}">Student Register</a>
+        </div>
+    </div>
+
+    <!-- Page Wrapper for Centering -->
+    <div class="page-wrapper">
+
+    <div class="register-container">
+        <h2>Admin Registration</h2>
+        <p class="subtitle">Create a new admin account</p>
+
+        <div class="info-box">
+            <strong>ℹ️ Admin Registration Key Required</strong>
+            You need a valid admin registration key to create an admin account. Ask your university administrator for the key.
+        </div>
+
+        <!-- Alerts -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="e.g., john_admin" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="e.g., admin@university.edu" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter a strong password" required>
+
+            <label for="admin_key">Admin Registration Key:</label>
+            <input type="password" id="admin_key" name="admin_key" placeholder="Enter the admin key" required>
+
+            <button type="submit">Create Admin Account</button>
+        </form>
+
+        <div class="divider"><span>OR</span></div>
+
+        <p style="color: #666; font-size: 14px; margin: 20px 0;">
+            Already have an admin account?
+        </p>
+        <a href="{{ url_for('main.admin_login') }}">Go to Admin Login</a>
+
+        <p style="color: #666; font-size: 14px; margin-top: 20px; border-top: 1px solid #ddd; padding-top: 20px;">
+            <a href="{{ url_for('main.index') }}">← Back to Home</a>
+        </p>
+    </div>
+
+    </div>  <!-- Close page-wrapper -->
+
+</body>
+</html>

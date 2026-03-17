@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>University Clubs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2c7be5;
+            padding: 10px 40px;
+            color: white;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar .logo img {
+            height: 40px;
+            width: auto;
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            margin-left: 20px;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .navbar ul li a:hover {
+            color: #d1e4ff;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .club-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 40px;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        .club-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            text-align: center;
+            width: 200px;
+            flex-shrink: 0;
+        }
+
+        .club-card:hover {
+            transform: scale(1.05);
+        }
+
+        .club-icon img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .join-btn {
+            margin-top: 15px;
+            padding: 8px 15px;
+            border: none;
+            background-color: #2c7be5;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .join-btn:hover {
+            background-color: #1a5fd1;
+        }
+
+        .background {
+            position: relative;
+            text-align: center;
+        }
+
+        .bg-img {
+            width: 100%;
+            height: 700px;
+            display: block;
+        }
+
+        .bg-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 48px;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.5); /* optional for readability */
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+
+        .bg-btn {
+            position: absolute;
+            top: 70%;              /* adjust position */
+            left: 50%;
+            transform: translateX(-50%);
+    
+            padding: 15px 30px;   /* makes it larger */
+            font-size: 18px;      /* bigger text */
+            border-radius: 8px;
+            border: none;
+            background-color: #2c7be5;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.2s;
+}
+
+
+        /* Optional footer spacing */
+        footer {
+            text-align: center;
+            margin: 40px 0;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <div class="logo">New City University
+        <img src="/static/images/logo.png" alt="University Logo">
+    </div>
+    <ul>
+        <li><a href="{{url_for('main.index')}}">Home</a></li>
+        {% if session.get('user_id') %}
+            <li><a href="{{url_for('main.account')}}">My Clubs</a></li>
+            {% if session.get('role') == 'admin' %}
+            <li><a href="{{url_for('main.create_club')}}">Create Club</a></li>
+            {% endif %}
+            <li><a href="{{url_for('main.logout')}}">Logout</a></li>
+        {% else %}
+            <li><a href="{{url_for('main.admin_login')}}">Admin Login</a></li>
+            <li><a href="{{url_for('main.admin_register')}}">Admin Register</a></li>
+            <li><a href="{{url_for('main.student_login')}}">Student Login</a></li>
+            <li><a href="{{url_for('main.register')}}">Register</a></li>
+        {% endif %}
+    </ul>
+</div>
+
+<div class="background">
+    <img src="{{ url_for('static', filename='images/University.jpg') }}" class="bg-img">
+    <h1 class="bg-text">New City University</h1>
+    <a href="#clubs">
+        <button class="bg-btn">Go to clubs</button>
+    </a>
+</div>
+
+
+<h1 id="clubs">Available University Clubs</h1>
+
+<div class="club-container">
+    {% if clubs %}
+        {% for club in clubs %}
+        <div class="club-card">
+            <div class="club-icon">
+                <!-- Correct icon based on club name -->
+                {% if 'Football' in club.name %}
+                    <img src="https://img.icons8.com/?size=100&id=9820&format=png&color=000000" alt="{{ club.name }}" title="Football">
+                {% elif 'Basketball' in club.name %}
+                    <img src="https://img.icons8.com/?size=100&id=ubcMtSSdyRHI&format=png&color=000000" alt="{{ club.name }}" title="Basketball">
+                {% elif 'Boxing' in club.name %}
+                    <img src="https://img.icons8.com/?size=100&id=YLMvAQ7fsst5&format=png&color=000000" alt="{{ club.name }}" title="Boxing">
+                {% elif 'Cricket' in club.name %}
+                    <img src="https://img.icons8.com/?size=100&id=CgP67foVm17G&format=png&color=000000" alt="{{ club.name }}" title="Cricket">
+                {% elif 'Music' in club.name %}
+                    <img src="https://img.icons8.com/?size=100&id=113920&format=png&color=000000" alt="{{ club.name }}" title="Music">
+                {% elif 'Film' in club.name or 'Media' in club.name %}
+                    <img src="https://img.icons8.com/?size=100&id=6Ujtt7adsfSb&format=png&color=000000" alt="{{ club.name }}" title="Film & Media">
+                {% elif 'Robotics' in club.name %}
+                    <img src="https://img.icons8.com/?size=100&id=3kQlqAGjT2rK&format=png&color=000000" alt="{{ club.name }}" title="Robotics">
+                {% elif 'Drama' in club.name %}
+                    <img src="https://img.icons8.com/?size=100&id=12076&format=png&color=000000" alt="{{ club.name }}" title="Drama">
+                {% elif 'Photography' in club.name %}
+                    <img src="https://img.icons8.com/?size=100&id=13077&format=png&color=000000" alt="{{ club.name }}" title="Photography">
+                {% else %}
+                    <img src="https://img.icons8.com/?size=100&id=113920&format=png&color=000000" alt="{{ club.name }}" title="Club">
+                {% endif %}
+            </div>
+            <h3>{{ club.name }}</h3>
+            {% if club.description %}
+            <p style="font-size: 12px; color: #666; margin: 10px 0;">{{ club.description[:60] }}{% if club.description|length > 60 %}...{% endif %}</p>
+            {% endif %}
+            <a href="{{ url_for('main.view_club', club_id=club.id) }}" style="text-decoration: none;">
+                <button class="join-btn">View Club</button>
+            </a>
+        </div>
+        {% endfor %}
+    {% else %}
+    <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+        <p>No clubs available yet.</p>
+    </div>
+    {% endif %}
+</div>
+
+<footer>
+    &copy; 2026 University Clubs
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Account - New City University</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2c7be5;
+            padding: 10px 40px;
+            color: white;
+        }
+
+        .navbar .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .welcome {
+            display: flex;
+            align-items: center;   /* vertically aligns them */
+            gap: 10px;             /* space between icon and text */
+        }
+
+        .welcome img {
+            height: 40px;          /* adjust size if needed */
+            width: auto;
+        }
+
+        h2 {
+            color: #2c7be5;
+            margin-bottom: 10px;
+        }
+
+        .role-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .student {
+            background-color: #d1e4ff;
+            color: #1a5fd1;
+        }
+
+        .admin {
+            background-color: #ffe0e0;
+            color: #c0392b;
+        }
+
+        .club-list {
+            margin-top: 20px;
+        }
+
+        .club-item {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .club-item:last-child {
+            border-bottom: none;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 15px;
+            background-color: #2c7be5;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #1a5fd1;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logo">New City University</div>
+    <a href="{{ url_for('main.index') }}">Home</a>
+</div>
+
+<div class="container">
+    <div class = "welcome">
+    <img src="https://www.freeiconspng.com/uploads/clipart--person-icon--cliparts-15.png" alt=" Person Icon" /></a>  
+    <h2>Welcome, {{ username }}</h2>
+    </div>
+
+    <!-- ROLE DISPLAY -->
+    {% if role == "admin" %}
+        <div class="role-badge admin">Administrator Account</div>
+    {% else %}
+        <div class="role-badge student">Student Account</div>
+    {% endif %}
+
+    <!-- STUDENT VIEW -->
+    {% if role == "student" %}
+        <div class="club-list">
+            <h3>Your Joined Clubs:</h3>
+
+            {% if memberships %}
+                {% for membership in memberships %}
+                    <div class="club-item">
+                        {{ membership.club.name }}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>You have not joined any clubs yet.</p>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    <!-- ADMIN VIEW -->
+    {% if role == "admin" %}
+        <div class="club-list">
+            <h3>Admin Controls:</h3>
+            <p>You can create clubs and manage student memberships.</p>
+            <a class="btn" href="{{ url_for('main.create_club') }}">Create New Club</a>
+        </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
