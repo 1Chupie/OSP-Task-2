@@ -61,14 +61,19 @@ OSP Task 2 Example/
 
 ## 🚀 Getting Started
 ```bash
+# 1. Install pipreqs
+pip install pipreqs
 
-# 1. Install dependencies
+# 2. Generate requirements.txt
+python -m pipreqs.pipreqs . --force
+
+# 3. Install dependencies
 pip install -r requirements.txt
 
-# 2. Initialize the database
+# 4. Initialize the database
 python _init_db.py
 
-# 3. Run the app
+# 5. Run the app
 python run.py
 ```
 
