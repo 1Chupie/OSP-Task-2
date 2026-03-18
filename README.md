@@ -42,10 +42,11 @@ OSP Task 2 Example/
 │   │   │   └── styles.css
 │   │   ├── images/
 │   │   │   └── stock1.jpg
-│   │   ├── js/
-│   │   │   └── script.js
-│   │   └── templates/
-│   │       └── index.html
+│   │   └── js/
+│   │       └── script.js
+│   │
+│   ├── templates/  
+│   │   └── index.html
 │   │
 │   ├── __init__.py
 │   ├── models.py
@@ -53,7 +54,7 @@ OSP Task 2 Example/
 │
 ├── _init_db.py
 ├── config.py
-└── run.py               
+└── run.py            
 ```
 
 ---
